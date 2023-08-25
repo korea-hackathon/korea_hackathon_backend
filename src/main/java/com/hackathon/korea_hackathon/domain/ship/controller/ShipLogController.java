@@ -12,9 +12,9 @@ public class ShipLogController {
 
     private final ShipLogService shipLogService;
 
-    @GetMapping("/wind-speed")
-    public String getWindSpeed(){
-        return shipLogService.findCurWindSpeed();
+    @GetMapping("/cur/wind-speed")
+    public WindSpeedResponse getWindSpeed(){
+        return shipLogService.getCurWindSpeed();
     }
 
     @GetMapping("/cur/location")

@@ -19,19 +19,20 @@ public class ShipLogService {
 
     private final ShipLogRepository shipLogRepository;
 
-    public String findCurWindSpeed(){
+    public WindSpeedResponse getCurWindSpeed(){
 
+        String windSpeed = "";
 
         LocalDateTime now = curDate();
-        System.out.println(now);
-        PageRequest pageRequest = PageRequest.of(0, 1); // 첫 페이지에서 한 개의 결과만 가져옵니다.
-        List<ShipLog> logs = shipLogRepository.findFirstByTimeBeforeAndDataChannelIdOrderByTimeDesc(now, DataType.WIND_SPEED.getDate());
 
-        if (!logs.isEmpty()) {
-            ShipLog mostRecent = logs.get(0); // 가장 최근 항목을 가져옵니다.
-            return mostRecent.getDoubleV();
+        PageRequest pageRequest = PageRequest.of(0, 1); // 첫 페이지에서 한 개의 결과만 가져옵니다.
+        List<ShipLog> windSpeed1 = shipLogRepository.findFirstByTimeBeforeAndDataChannelIdOrderByTimeDesc(now, DataType.WIND_SPEED.getDate());
+
+        if(!windSpeed1.isEmpty()){
+            ShipLog mostRecent = windSpeed1.get(0);
+            windSpeed = mostRecent.getDoubleV();
         }
-        return null;
+        return new WindSpeedResponse(windSpeed);
     }
 
     public LocationResponse getCurLocation(){
@@ -194,6 +195,6 @@ public class ShipLogService {
 
     private LocalDateTime curDate(){
         ZonedDateTime curDate = ZonedDateTime.now(ZoneId.of("Asia/Seoul"));
-        return curDate.minusMonths(1).minusDays(9).toLocalDateTime();
+        return curDate.minusMonths(1).minusDays(8).toLocalDateTime();
     }
 }
