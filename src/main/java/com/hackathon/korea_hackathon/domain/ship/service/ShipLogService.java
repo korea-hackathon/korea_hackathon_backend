@@ -9,6 +9,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -191,6 +193,7 @@ public class ShipLogService {
     }
 
     private LocalDateTime curDate(){
-        return LocalDateTime.now().minusMonths(1).minusDays(9);
+        ZonedDateTime curDate = ZonedDateTime.now(ZoneId.of("Asia/Seoul"));
+        return curDate.minusMonths(1).minusDays(9).toLocalDateTime();
     }
 }
