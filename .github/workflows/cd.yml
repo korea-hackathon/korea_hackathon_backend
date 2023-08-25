@@ -40,14 +40,16 @@ jobs:
           docker build --build-arg DEPENDENCY=build/dependency -t ${{ secrets.DOCKER_USERNAME }}/hackathon --platform linux/amd64 .
           docker push ${{ secrets.DOCKER_USERNAME }}/hackathon:latest
 
-      - name: EC2 Docker Run
+      - name: Deploy to server
         uses: appleboy/ssh-action@master
+        id: deploy
         with:
           host: ${{ secrets.HOST }}
           username: ubuntu
-          key: ${{ secrets.PRIVATE_KEY }}
-          script: |
-            docker pull hyunsu1768/hackathon:latest
-            docker run -d -p 8080:8080 -e DB_PASSWORD=Qpwoeiru1768@ -e DB_URL=jdbc:mysql://43.201.161.214:3306/hackathon hyunsu1768/hackathon
-            docker rm $(docker ps --filter 'status=exited' -a -q)
-            docker image prune -a -f
+          key: ${{ secrets.KEY }}
+          envs: GITHUB_SHA
+        script: |
+          docker pull hyunsu1768/hackathon:latest
+          docker run -d -p 8080:8080 -e DB_PASSWORD=Qpwoeiru1768@ -e DB_URL=jdbc:mysql://43.201.161.214:3306/hackathon hyunsu1768/hackathon
+          docker rm $(docker ps --filter 'status=exited' -a -q)
+          docker image prune -a -f
