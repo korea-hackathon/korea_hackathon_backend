@@ -42,4 +42,9 @@ public class ShipLogController {
         return shipLogService.getCurWaterSpeed();
     }
 
+    @GetMapping("/cur/geRpm")
+    public GeRpmResponse getCurGeRpm(){
+        return shipLogService.getCurGeRpm();
+    }
+
 }

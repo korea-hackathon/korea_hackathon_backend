@@ -120,6 +120,40 @@ public class ShipLogService {
         return new WaterSpeedResponse(waterSpeed);
     }
 
+    public GeRpmResponse getCurGeRpm(){
+
+        String geRpmOne = "";
+        String geRpmTwo = "";
+        String geRpmThree = "";
+
+        LocalDateTime now = curDate();
+        PageRequest pageRequest = PageRequest.of(0, 1); // 첫 페이지에서 한 개의 결과만 가져옵니다.
+
+        List<ShipLog> geRpm1 = shipLogRepository.findFirstByTimeBeforeAndDataChannelIdOrderByTimeDesc(now, DataType.GE_RPM1.getDate());
+
+        if(!geRpm1.isEmpty()){
+            ShipLog mostRecent = geRpm1.get(0);
+            geRpmOne = mostRecent.getDoubleV();
+        }
+
+        List<ShipLog> geRpm2 = shipLogRepository.findFirstByTimeBeforeAndDataChannelIdOrderByTimeDesc(now, DataType.GE_RPM2.getDate());
+
+        if(!geRpm2.isEmpty()){
+            ShipLog mostRecent = geRpm1.get(0);
+            geRpmOne = mostRecent.getDoubleV();
+        }
+
+        List<ShipLog> geRpm3 = shipLogRepository.findFirstByTimeBeforeAndDataChannelIdOrderByTimeDesc(now, DataType.GE_RPM3.getDate());
+
+        if(!geRpm3.isEmpty()){
+            ShipLog mostRecent = geRpm1.get(0);
+            geRpmOne = mostRecent.getDoubleV();
+        }
+
+        return new GeRpmResponse(geRpmOne, geRpmTwo, geRpmThree);
+
+    }
+
     private LocalDateTime curDate(){
         return LocalDateTime.now().minusMonths(1).minusDays(9);
     }
