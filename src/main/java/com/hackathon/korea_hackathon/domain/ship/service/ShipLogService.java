@@ -1,5 +1,6 @@
 package com.hackathon.korea_hackathon.domain.ship.service;
 
+import com.hackathon.korea_hackathon.domain.ship.dto.LoadResponse;
 import com.hackathon.korea_hackathon.domain.ship.dto.LocationResponse;
 import com.hackathon.korea_hackathon.domain.ship.dto.RpmResponse;
 import com.hackathon.korea_hackathon.domain.ship.entity.DataType;
@@ -71,6 +72,22 @@ public class ShipLogService {
         }
 
         return new RpmResponse(rpm);
+    }
+
+    public LoadResponse getCurLoad(){
+
+        String load = "";
+
+        LocalDateTime now = curDate();
+        PageRequest pageRequest = PageRequest.of(0, 1); // 첫 페이지에서 한 개의 결과만 가져옵니다.
+        List<ShipLog> load1 = shipLogRepository.findFirstByTimeBeforeAndDataChannelIdOrderByTimeDesc(now, DataType.LOAD.getDate());
+
+        if(!load1.isEmpty()){
+            ShipLog mostRecent = load1.get(0);
+            load = mostRecent.getDoubleV();
+        }
+
+        return new LoadResponse(load);
     }
 
     private LocalDateTime curDate(){

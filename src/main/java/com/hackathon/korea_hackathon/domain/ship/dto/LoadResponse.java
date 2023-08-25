@@ -5,10 +5,6 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class LocationResponse {
-
-    private String latitude;
-
-    private String longitude;
-
+public class LoadResponse {
+    private String load;
 }

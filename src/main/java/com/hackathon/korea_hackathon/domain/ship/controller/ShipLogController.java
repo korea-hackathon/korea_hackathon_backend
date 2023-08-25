@@ -1,5 +1,6 @@
 package com.hackathon.korea_hackathon.domain.ship.controller;
 
+import com.hackathon.korea_hackathon.domain.ship.dto.LoadResponse;
 import com.hackathon.korea_hackathon.domain.ship.dto.LocationResponse;
 import com.hackathon.korea_hackathon.domain.ship.dto.RpmResponse;
 import com.hackathon.korea_hackathon.domain.ship.service.ShipLogService;
@@ -26,6 +27,11 @@ public class ShipLogController {
     @GetMapping("/cur/rpm")
     public RpmResponse getCurRpm(){
         return shipLogService.getCurRpm();
+    }
+
+    @GetMapping("/cur/load")
+    public LoadResponse getCurLoad(){
+        return shipLogService.getCurLoad();
     }
 
 }
