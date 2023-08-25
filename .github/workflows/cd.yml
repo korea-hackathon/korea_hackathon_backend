@@ -40,15 +40,13 @@ jobs:
           docker build --build-arg DEPENDENCY=build/dependency -t ${{ secrets.DOCKER_USERNAME }}/hackathon --platform linux/amd64 .
           docker push ${{ secrets.DOCKER_USERNAME }}/hackathon:latest
 
-      - name: Deploy
+      - name: EC2 Docker Run
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.HOST }} # EC2 인스턴스 퍼블릭 DNS
-          username: ec2-user
-          key: ${{ secrets.PRIVATE_KEY }} # pem 키
-          # 도커 작업
+          host: ${{ secrets.EC2_HOST }}
+          username: ubuntu
+          key: ${{ secrets.PRIVATE_KEY }}
           script: |
-            docker stop $(docker ps -a --format '{{.ID}} {{.Image}}' | grep -v mysql | grep -v redis | awk '{print $1}')
             docker pull hyunsu1768/hackathon:latest
             docker run -d -p 8080:8080 -e DB_PASSWORD=Qpwoeiru1768@ -e DB_URL=jdbc:mysql://43.201.161.214:3306/hackathon hyunsu1768/hackathon
             docker rm $(docker ps --filter 'status=exited' -a -q)
