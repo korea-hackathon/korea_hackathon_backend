@@ -22,7 +22,7 @@ public class FileReaderJobConfig {
 
     private final CsvScheduleWriter csvScheduleWriter;
 
-    private static final int chunkSize = 100000;
+    private static final int chunkSize = 1000;
 
     @Bean
     public Job csvScheduleJob(){

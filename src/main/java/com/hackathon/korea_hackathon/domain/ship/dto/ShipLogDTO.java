@@ -12,17 +12,26 @@ import lombok.NoArgsConstructor;
 @Builder
 public class ShipLogDTO {
 
-    private String policyID;
+    private String createdTime;
 
-    private String statecode;
+    private String dataChannelId;
 
-    private String county;
+    private String boolV;
+
+    private String strV;
+
+    private String doubleV;
+
+    private String valueFormat;
 
     public ShipLog toEntity(){
         return ShipLog.builder()
-                .policyID(this.policyID)
-                .statecode(this.statecode)
-                .county(this.county)
+                .createdTime(this.createdTime)
+                .dataChannelId(this.dataChannelId)
+                .boolV(this.boolV)
+                .strV(this.strV)
+                .doubleV(this.doubleV)
+                .valueFormat(this.valueFormat)
                 .build();
     }
 }

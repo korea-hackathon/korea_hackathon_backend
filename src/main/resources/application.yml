@@ -4,15 +4,15 @@ spring:
     username: ${DB_USERNAME:root}
     password: ${DB_PASSWORD:qpwoeiru1768}
     driver-class-name: com.mysql.cj.jdbc.Driver
-
   jpa:
     hibernate:
       ddl-auto: update
-    open-in-view: false
     properties:
       hibernate:
-        show_sql: false
-        format_sql: true
+        jdbc:
+          batch_size: 300
+        order_inserts: true
+        order_updates: true
 
   batch:
     jdbc:

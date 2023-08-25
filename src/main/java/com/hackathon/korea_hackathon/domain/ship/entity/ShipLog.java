@@ -19,10 +19,16 @@ public class ShipLog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String policyID;
+    private String createdTime;
 
-    private String statecode;
+    private String dataChannelId;
 
-    private String county;
+    private String boolV;
+
+    private String strV;
+
+    private String doubleV;
+
+    private String valueFormat;
 
 }
