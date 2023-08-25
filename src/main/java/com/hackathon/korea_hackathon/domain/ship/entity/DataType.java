@@ -23,8 +23,10 @@ public enum DataType {
     LOAD("/AMS/AMS/MC043"),
 
     //수온
-    WATER_TEMP("/AMS/AMS/MW001");
+    WATER_TEMP("/AMS/AMS/MW001"),
 
+    //물쌀
+    WATER_SPEED("/VDR/VDVBW/VDVBW_CH1");
     private final String date;
 
 }
