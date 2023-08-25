@@ -31,7 +31,12 @@ public enum DataType {
     //전력 rpm
     GE_RPM1("/AMS/AMS/GE146"),
     GE_RPM2("/AMS/AMS/GE246"),
-    GE_RPM3("/AMS/AMS/GE346");
+    GE_RPM3("/AMS/AMS/GE346"),
+
+    //전력 부하
+    GE_LOAD1("/AMS/AMS/GE170"),
+    GE_LOAD2("/AMS/AMS/GE270"),
+    GE_LOAD3("/AMS/AMS/GE370");
 
     private final String date;
 

@@ -47,4 +47,9 @@ public class ShipLogController {
         return shipLogService.getCurGeRpm();
     }
 
+    @GetMapping("/cur/geLoad")
+    public GeLoadResponse getCurGeLoad(){
+        return shipLogService.getCurGeLoad();
+    }
+
 }

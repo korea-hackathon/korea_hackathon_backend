@@ -133,24 +133,60 @@ public class ShipLogService {
 
         if(!geRpm1.isEmpty()){
             ShipLog mostRecent = geRpm1.get(0);
+
             geRpmOne = mostRecent.getDoubleV();
         }
 
         List<ShipLog> geRpm2 = shipLogRepository.findFirstByTimeBeforeAndDataChannelIdOrderByTimeDesc(now, DataType.GE_RPM2.getDate());
 
         if(!geRpm2.isEmpty()){
-            ShipLog mostRecent = geRpm1.get(0);
-            geRpmOne = mostRecent.getDoubleV();
+            ShipLog mostRecent = geRpm2.get(0);
+            geRpmTwo = mostRecent.getDoubleV();
         }
 
         List<ShipLog> geRpm3 = shipLogRepository.findFirstByTimeBeforeAndDataChannelIdOrderByTimeDesc(now, DataType.GE_RPM3.getDate());
 
         if(!geRpm3.isEmpty()){
-            ShipLog mostRecent = geRpm1.get(0);
-            geRpmOne = mostRecent.getDoubleV();
+            ShipLog mostRecent = geRpm3.get(0);
+            geRpmThree = mostRecent.getDoubleV();
         }
 
         return new GeRpmResponse(geRpmOne, geRpmTwo, geRpmThree);
+
+    }
+
+    public GeLoadResponse getCurGeLoad(){
+
+        String geLoadOne = "";
+        String geLoadTwo = "";
+        String geLoadThree = "";
+
+        LocalDateTime now = curDate();
+        PageRequest pageRequest = PageRequest.of(0, 1); // 첫 페이지에서 한 개의 결과만 가져옵니다.
+
+        List<ShipLog> geLoad1 = shipLogRepository.findFirstByTimeBeforeAndDataChannelIdOrderByTimeDesc(now, DataType.GE_LOAD1.getDate());
+
+        if(!geLoad1.isEmpty()){
+            ShipLog mostRecent = geLoad1.get(0);
+
+            geLoadOne = mostRecent.getDoubleV();
+        }
+
+        List<ShipLog> geLoad2 = shipLogRepository.findFirstByTimeBeforeAndDataChannelIdOrderByTimeDesc(now, DataType.GE_LOAD2.getDate());
+
+        if(!geLoad2.isEmpty()){
+            ShipLog mostRecent = geLoad2.get(0);
+            geLoadTwo = mostRecent.getDoubleV();
+        }
+
+        List<ShipLog> geLoad3 = shipLogRepository.findFirstByTimeBeforeAndDataChannelIdOrderByTimeDesc(now, DataType.GE_LOAD3.getDate());
+
+        if(!geLoad3.isEmpty()){
+            ShipLog mostRecent = geLoad3.get(0);
+            geLoadThree = mostRecent.getDoubleV();
+        }
+
+        return new GeLoadResponse(geLoadOne, geLoadTwo, geLoadThree);
 
     }
 
