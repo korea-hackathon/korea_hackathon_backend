@@ -6,6 +6,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -25,8 +28,13 @@ public class ShipLogDTO {
     private String valueFormat;
 
     public ShipLog toEntity(){
+
+        this.createdTime = createdTime.substring(1, createdTime.length() - 1); // 작은따옴표 제거
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
+
+        LocalDateTime dateTime = LocalDateTime.parse(this.createdTime, formatter);
         return ShipLog.builder()
-                .createdTime(this.createdTime)
+                .createdTime(dateTime)
                 .dataChannelId(this.dataChannelId)
                 .boolV(this.boolV)
                 .strV(this.strV)

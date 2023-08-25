@@ -11,15 +11,19 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 
-@RequiredArgsConstructor
 @Configuration
+@RequiredArgsConstructor
 public class CsvReader {
 
+    /**
+     * 학사일정 파일 읽기
+     */
     @Bean
     public FlatFileItemReader<ShipLogDTO> csvScheduleReader(){
         /* 파일읽기 */
         FlatFileItemReader<ShipLogDTO> flatFileItemReader = new FlatFileItemReader<>();
-        flatFileItemReader.setResource(new ClassPathResource("file/csv/VDR1.csv")); //읽을 파일 경로 지정
+        flatFileItemReader.setResource(new ClassPathResource("/file/csv/VDR1.csv")); //읽을 파일 경로 지정
+        flatFileItemReader.setLinesToSkip(1);
         flatFileItemReader.setEncoding("UTF-8"); //인토딩 설정
 
         /* defaultLineMapper: 읽으려는 데이터 LineMapper을 통해 Dto로 매핑 */
@@ -27,7 +31,7 @@ public class CsvReader {
 
         /* delimitedLineTokenizer : csv 파일에서 구분자 지정하고 구분한 데이터 setNames를 통해 각 이름 설정 */
         DelimitedLineTokenizer delimitedLineTokenizer = new DelimitedLineTokenizer(","); //csv 파일에서 구분자
-        delimitedLineTokenizer.setNames("created_time", "data_channel_id", "bool_v","str_v","double_v","value_format"); //행으로 읽은 데이터 매칭할 데이터 각 이름
+        delimitedLineTokenizer.setNames("createdTime", "dataChannelId", "boolV","strV","doubleV","valueFormat"); //행으로 읽은 데이터 매칭할 데이터 각 이름
         defaultLineMapper.setLineTokenizer(delimitedLineTokenizer); //lineTokenizer 설정
 
         /* beanWrapperFieldSetMapper: 매칭할 class 타입 지정 */
