@@ -3,6 +3,7 @@ package com.hackathon.korea_hackathon.domain.ship.controller;
 import com.hackathon.korea_hackathon.domain.ship.dto.LoadResponse;
 import com.hackathon.korea_hackathon.domain.ship.dto.LocationResponse;
 import com.hackathon.korea_hackathon.domain.ship.dto.RpmResponse;
+import com.hackathon.korea_hackathon.domain.ship.dto.WaterTempResponse;
 import com.hackathon.korea_hackathon.domain.ship.service.ShipLogService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,6 +33,11 @@ public class ShipLogController {
     @GetMapping("/cur/load")
     public LoadResponse getCurLoad(){
         return shipLogService.getCurLoad();
+    }
+
+    @GetMapping("/cur/waterTemp")
+    public WaterTempResponse getCurWaterTemp(){
+        return shipLogService.getCurWaterTemp();
     }
 
 }

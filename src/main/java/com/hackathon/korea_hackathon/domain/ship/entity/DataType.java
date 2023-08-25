@@ -6,7 +6,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum DataType {
-    
+
     //풍속
     WIND_SPEED("/VDR/WIMWV/WIMWV_CH3"),
 
@@ -20,7 +20,10 @@ public enum DataType {
     RPM("/AMS/AMS/MC022"),
 
     //부하
-    LOAD("/AMS/AMS/MC043");
+    LOAD("/AMS/AMS/MC043"),
+
+    //수온
+    WATER_TEMP("/AMS/AMS/MW001");
 
     private final String date;
 
