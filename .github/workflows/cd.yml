@@ -46,9 +46,8 @@ jobs:
           host: ${{ secrets.HOST }} # EC2 인스턴스 퍼블릭 DNS
           username: ec2-user
           key: ${{ secrets.PRIVATE_KEY }} # pem 키
-        script: |
-          docker pull hyunsu1768/hackathon:latest
-          docker run -d -p 8080:8080 -e DB_PASSWORD=Qpwoeiru1768@ -e DB_URL=jdbc:mysql://43.201.161.214:3306/hackathon hyunsu1768/hackathon
-          docker rm $(docker ps --filter 'status=exited' -a -q)
-          docker image prune -a -f
-      
+          script: |
+           docker pull hyunsu1768/hackathon:latest
+           docker run -d -p 8080:8080 -e DB_PASSWORD=Qpwoeiru1768@ -e DB_URL=jdbc:mysql://43.201.161.214:3306/hackathon hyunsu1768/hackathon
+           docker rm $(docker ps --filter 'status=exited' -a -q)
+           docker image prune -a -f
