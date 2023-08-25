@@ -1,6 +1,7 @@
 package com.hackathon.korea_hackathon.domain.ship.controller;
 
 import com.hackathon.korea_hackathon.domain.ship.dto.LocationResponse;
+import com.hackathon.korea_hackathon.domain.ship.dto.RpmResponse;
 import com.hackathon.korea_hackathon.domain.ship.service.ShipLogService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,4 +22,10 @@ public class ShipLogController {
     public LocationResponse getCurLocation(){
         return shipLogService.getCurLocation();
     }
+
+    @GetMapping("/cur/rpm")
+    public RpmResponse getCurRpm(){
+        return shipLogService.getCurRpm();
+    }
+
 }

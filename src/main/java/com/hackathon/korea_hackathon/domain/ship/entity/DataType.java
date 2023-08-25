@@ -11,7 +11,9 @@ public enum DataType {
 
     LATITUDE("/VDR/GPGGA/GPGGA_CH2"),
 
-    LONGITUDE("/VDR/GPGGA/GPGGA_CH4");
+    LONGITUDE("/VDR/GPGGA/GPGGA_CH4"),
+
+    RPM("/AMS/AMS/MC022");
 
     private final String date;
 

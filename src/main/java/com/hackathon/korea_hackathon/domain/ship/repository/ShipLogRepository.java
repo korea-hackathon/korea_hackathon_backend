@@ -1,12 +1,10 @@
 package com.hackathon.korea_hackathon.domain.ship.repository;
 
-import com.hackathon.korea_hackathon.domain.ship.entity.DataType;
 import com.hackathon.korea_hackathon.domain.ship.entity.ShipLog;
 import feign.Param;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import java.awt.print.Pageable;
 import java.time.LocalDateTime;
 import java.util.List;
 
