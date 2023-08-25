@@ -48,7 +48,7 @@ jobs:
           username: ubuntu
           key: ${{ secrets.KEY }}
           envs: GITHUB_SHA
-        script: |
+        commands: |
           docker pull hyunsu1768/hackathon:latest
           docker run -d -p 8080:8080 -e DB_PASSWORD=Qpwoeiru1768@ -e DB_URL=jdbc:mysql://43.201.161.214:3306/hackathon hyunsu1768/hackathon
           docker rm $(docker ps --filter 'status=exited' -a -q)
