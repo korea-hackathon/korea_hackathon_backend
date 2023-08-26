@@ -206,13 +206,13 @@ public class ShipLogService {
         ));
 
         locationResponses.add(new LocationResponse(
-                Double.toString(Double.parseDouble(curLocation.getLatitude()) + 5.0),
-                Double.toString(Double.parseDouble(curLocation.getLongitude()) - 5.0)
+                Double.toString(Double.parseDouble(curLocation.getLatitude()) + 0.2),
+                Double.toString(Double.parseDouble(curLocation.getLongitude()) - 0.2)
         ));
 
         locationResponses.add(new LocationResponse(
-                Double.toString(Double.parseDouble(curLocation.getLatitude()) + 12.0),
-                Double.toString(Double.parseDouble(curLocation.getLongitude()) + 10.0)
+                Double.toString(Double.parseDouble(curLocation.getLatitude()) + 0.5),
+                Double.toString(Double.parseDouble(curLocation.getLongitude()) + 0.4)
         ));
         return locationResponses;
     }
