@@ -47,6 +47,6 @@ jobs:
           username: ec2-user
           key: ${{ secrets.PRIVATE_KEY }} # pem 키
           script:
-            docker stop hyunsu1768/hackathon:latest
+            docker ps -q | grep -v 5864b4eefe18 | xargs docker stop
             docker pull hyunsu1768/hackathon:latest
             docker run -d -p 8080:8080 -e DB_PASSWORD=Qpwoeiru1768@ -e DB_URL=jdbc:mysql://3.36.99.156:3306/hackathon hyunsu1768/hackathon
