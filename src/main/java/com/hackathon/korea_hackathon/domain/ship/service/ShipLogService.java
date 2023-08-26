@@ -193,6 +193,15 @@ public class ShipLogService {
 
     }
 
+    public LocationResponse getDangerousZone(){
+        LocationResponse curLocation = getCurLocation();
+
+        return new LocationResponse(
+            Double.toString(Double.parseDouble(curLocation.getLatitude()) + 1.0),
+                Double.toString(Double.parseDouble(curLocation.getLongitude()) + 1.0)
+        );
+    }
+
     private LocalDateTime curDate(){
         ZonedDateTime curDate = ZonedDateTime.now(ZoneId.of("Asia/Seoul"));
         return curDate.minusMonths(1).minusDays(8).toLocalDateTime();

@@ -52,4 +52,9 @@ public class ShipLogController {
         return shipLogService.getCurGeLoad();
     }
 
+    @GetMapping("/dangerous-zone")
+    public LocationResponse getDangerousZone(){
+        return shipLogService.getDangerousZone();
+    }
+
 }
