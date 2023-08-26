@@ -202,6 +202,10 @@ public class ShipLogService {
         );
     }
 
+    public FuelResponse getFuel() {
+        return new FuelResponse("150", "64.8%");
+    }
+
     private LocalDateTime curDate(){
         ZonedDateTime curDate = ZonedDateTime.now(ZoneId.of("Asia/Seoul"));
         return curDate.minusMonths(1).minusDays(8).toLocalDateTime();

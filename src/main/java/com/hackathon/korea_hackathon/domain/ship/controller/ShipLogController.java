@@ -57,4 +57,9 @@ public class ShipLogController {
         return shipLogService.getDangerousZone();
     }
 
+    @GetMapping("/cur/fuel")
+    public FuelResponse getFuel(){
+        return shipLogService.getFuel();
+    }
+
 }
