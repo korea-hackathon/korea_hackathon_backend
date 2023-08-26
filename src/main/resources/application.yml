@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: ${DB_URL:jdbc:mysql://3.36.99.156:3306/hackathon}
+    url: ${DB_URL:jdbc:mysql://hackathon.cllk6e2eixfc.ap-northeast-2.rds.amazonaws.com:3306/hackathon}
     username: ${DB_USERNAME:root}
-    password: ${DB_PASSWORD:Qpwoeiru1768@}
+    password: ${DB_PASSWORD:qpwoeiru1768}
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
@@ -16,6 +16,6 @@ spring:
 
   batch:
     job:
-      enabled: false
+      enabled: true
     jdbc:
       initialize-schema: always
