@@ -35,7 +35,8 @@ public class SecurityConfig{
                 "http://hackathon-front.s3-website.ap-northeast-2.amazonaws.com",
                 "http://localhost:3000",
                 "https://www.mukgen.info",
-                "https://mukgen.info"));
+                "https://mukgen.info,",
+                "https://hackathon.mukgen.info"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE")); // HTTP 메서드 허용
         configuration.setAllowCredentials(true);
         configuration.addAllowedHeader("*");
