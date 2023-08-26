@@ -9,7 +9,7 @@ name: Java CI with Gradle
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "mainasdf" ]
 
 permissions:
   contents: read
@@ -51,4 +51,4 @@ jobs:
               
             docker pull hyunsu1768/hackathon:latest
               
-            docker run -d --name hackathon -p 8080:8080 -e DB_PASSWORD=Qpwoeiru1768@ -e DB_URL=jdbc:mysql://3.36.99.156:3306/hackathon hyunsu1768/hackathon
+            docker run -d --name hackathon -p 8080:8080 -e DB_PASSWORD=Qpwoeiru1768@ -e DB_URL=jdbc:mysql://43.200.155.149:3306/hackathon hyunsu1768/hackathon

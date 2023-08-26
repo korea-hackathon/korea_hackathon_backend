@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -193,13 +194,27 @@ public class ShipLogService {
 
     }
 
-    public LocationResponse getDangerousZone(){
+    public List<LocationResponse> getDangerousZone(){
+
+        List<LocationResponse> locationResponses = new ArrayList<>();
+
         LocationResponse curLocation = getCurLocation();
 
-        return new LocationResponse(
+        locationResponses.add(new LocationResponse(
             Double.toString(Double.parseDouble(curLocation.getLatitude()) + 1.0),
                 Double.toString(Double.parseDouble(curLocation.getLongitude()) + 1.0)
-        );
+        ));
+
+        locationResponses.add(new LocationResponse(
+                Double.toString(Double.parseDouble(curLocation.getLatitude()) + 5.0),
+                Double.toString(Double.parseDouble(curLocation.getLongitude()) - 5.0)
+        ));
+
+        locationResponses.add(new LocationResponse(
+                Double.toString(Double.parseDouble(curLocation.getLatitude()) + 12.0),
+                Double.toString(Double.parseDouble(curLocation.getLongitude()) + 10.0)
+        ));
+        return locationResponses;
     }
 
     public FuelResponse getFuel() {

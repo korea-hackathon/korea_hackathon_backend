@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @RestController
 public class ShipLogController {
@@ -53,7 +55,7 @@ public class ShipLogController {
     }
 
     @GetMapping("/dangerous-zone")
-    public LocationResponse getDangerousZone(){
+    public List<LocationResponse> getDangerousZone(){
         return shipLogService.getDangerousZone();
     }
 
