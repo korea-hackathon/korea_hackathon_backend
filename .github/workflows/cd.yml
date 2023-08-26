@@ -50,5 +50,5 @@ jobs:
             docker stop hackathon || true && docker rm hackathon || true
               
             docker pull hyunsu1768/hackathon:latest
-              
-            docker run -d --name hackathon -p 8080:8080 -e DB_PASSWORD=Qpwoeiru1768@ -e DB_URL=jdbc:mysql://43.200.155.149:3306/hackathon hyunsu1768/hackathon
+            
+            docker run -d --name hackathon -p 8080:8080 -e DB_PASSWORD=qpwoeiru1768 -e DB_URL=jdbc:mysql://hackathon.cllk6e2eixfc.ap-northeast-2.rds.amazonaws.com:3306/hackathon hyunsu1768/hackathon
