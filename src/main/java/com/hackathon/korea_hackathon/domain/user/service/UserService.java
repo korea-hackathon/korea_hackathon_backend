@@ -22,6 +22,10 @@ public class UserService {
         flareLaneUtil.sendMessage("메인 엔진 부하가 90%를 넘었습니다 🚨", "문제가 없는지 확인해주시길 바랍니다");
     }
 
+    public void notiDangerous(){
+        flareLaneUtil.sendMessage("DANGEROUS ZONE 🚨", "사고다발 지역에 진입하였습니다");
+    }
+
     public List<UserTaskResponse> getTaskFirst(){
 
         List<UserTaskResponse> userTaskResponses = new ArrayList<>();

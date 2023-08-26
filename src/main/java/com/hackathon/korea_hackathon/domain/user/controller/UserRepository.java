@@ -25,6 +25,11 @@ public class UserRepository {
         userService.notiLoadMobile();
     }
 
+    @PostMapping("/user/dangerous")
+    public void notiDangerous() {
+        userService.notiDangerous();
+    }
+
     @GetMapping("/user/get-task-first")
     public List<UserTaskResponse> getTaskFirst() {
         return userService.getTaskFirst();
