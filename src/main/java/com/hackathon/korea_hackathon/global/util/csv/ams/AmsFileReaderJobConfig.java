@@ -1,8 +1,6 @@
 package com.hackathon.korea_hackathon.global.util.csv.ams;
 
 import com.hackathon.korea_hackathon.domain.ship.dto.ShipLogDTO;
-import com.hackathon.korea_hackathon.global.util.csv.vdr.CsvReader;
-import com.hackathon.korea_hackathon.global.util.csv.vdr.CsvScheduleWriter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
